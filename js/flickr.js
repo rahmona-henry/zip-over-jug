@@ -1,58 +1,65 @@
 var agent = require('superagent')
-var dotenv = require('dotenv')
 
-dotenv.load()
 
-var url
+function getPhoto(word, callback){
+  var query = [
+    'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=',
+    'a92f50119a0acc5d49347961a6b0a743',
+    '&tags='+ word + '&per_page=6&format=json&nojsoncallback=1'   /////user input tag
+  ].join('')
 
-var getPhoto = function(str, callback){
-var query = [
-  'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=',
-  process.env.FLICKR_API_KEY,
-  '&tags='+ str + '&per_page=6&format=json&nojsoncallback=1'   /////user input tag
-].join('')
-
-  agent.get(query, function(err, response, body){
-    if (err) {console.log("error!", err)
-      return}
-
-    var object = JSON.parse(response.text)
-    object = object.photos.photo[0]
-
-    if(object == undefined){
-      getRandomWord()
+  agent.get(query, function(err, res, body){
+    if (err) {
+      callback (err)
+      return
     }
-    else{
-    url = 'https://farm'+ object.farm +'.staticflickr.com/'+ object.server +'/' + object.id + '_' + object.secret +'_t.jpg'
-    console.log(url, "this is URL")
-    return url
-  }
+
+    var parsedRes = JSON.parse(res.text)
+    var photo = parsedRes.photos.photo[0]
+
+    if (!photo) {
+      callback(null,  "-1")
+      return
+    }
+
+    var url ='https://farm'+ photo.farm +'.staticflickr.com/'+ photo.server +'/' + photo.id + '_' + photo.secret +'_t.jpg'
+    callback(null, url)
   })
 }
 
-var getRandomWord = function(callback){
-  agent.get('http://randomword.setgetgo.com/get.php', function(err, response, callback){
-    if(err){
-      console.log(err, "error")
+
+function getRandomWord (callback) {
+  agent.get('http://randomword.setgetgo.com/get.php', function(err, res) {
+    if (err) {
+      callback(err)
+      return
     }
-     return getPhoto(response.text)
+    callback(null, res.text)
   })
 }
 
-getRandomWord()
 
-exports = module.export = {
-  getRandomWord : getRandomWord,
-  getPhoto : getPhoto
+function getRandomPhoto(callback){
+  getRandomWord( function (err, word) {
+    if (err) {
+      callback(err)
+      return
+    }
+
+    getPhoto(word, function (err, photoURL) {
+      if (err) {
+        callback(err)
+        return
+      }
+
+      if (photoURL === "-1") {
+        getRandomPhoto(callback)
+        return
+      }
+      callback(null, photoURL)
+    })
+  })
 }
 
-// var rando = getRandomWord()
-// console.log(rando)
-// var query = [
-//   'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=',
-//   process.env.FLICKR_API_KEY,
-//   '&tags='+ rando + '&per_page=6&format=json&nojsoncallback=1'   /////user input tag
-// ].join('')
-// getPhoto()
-
+module.exports = getRandomPhoto
 
