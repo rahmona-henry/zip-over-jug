@@ -1,6 +1,7 @@
 $bench-color: #E71D36;
 $cupboard-color: #75D701;
 $dishwasher :#a3a1a1;
+$water : #cff09e;
 
 div{
 	display: block;
@@ -47,12 +48,14 @@ div{
 				position: absolute;
 				left: 0;
 				bottom: 0;
-				background-color: red;
+				background-color: $water;
 			}
 		}
 		.cup.fill{
+			opacity: 0.9;
 			.glassWater{
 				height: 80%;
+				opacity: 0.7;
 				transition: height 2s;
 			}
 		}
@@ -70,8 +73,8 @@ div{
 	overflow: visible;
 	.waterFlow{
 		position: absolute;
-		top:230px;
-		right: 130px;
+		top:84%;
+		right: 49%;
 		z-index: 11; 
 		width: 30px;
 		height: 0px; 
@@ -79,7 +82,7 @@ div{
 	}
 	&.run{
 		.waterFlow{
-		height: 180px;
+		height: 90%;
 		transition: height 2s;}
 	}
 
@@ -110,6 +113,7 @@ div{
 		.content{
 			text-align: center;
 			display: block;
+			transition: display 1s;
 			p{
 				margin: 23px;
 				font-size: 30px;
@@ -132,13 +136,24 @@ div{
 	background-color: $bench-color;
 	z-index: 0;
 }
+
 #underZip{
 	z-index: 10;
-	width: 10%;
-	height: 5%;
+	width: 20%;
+	height: 20%;
+	border-radius: 0;
+	position: absolute;
+	top: 50%;
+	left: 40%;
+
+}
+#innerUnderZip{
+	z-index: 11;
+	width: 40%;
+	height: 40%;
 	border-radius: 50%;
 	position: absolute;
-	top: 60%;
-	left: 45%;
+	top: 65%;
+	left: 29%;
 	background-color: black;
 }
