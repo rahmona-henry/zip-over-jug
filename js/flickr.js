@@ -25,13 +25,12 @@ var query = [
     console.log(object)
     object = object.photos.photo[0]
 
-    console.log(url)
     if(object == undefined){
       getRandomWord()
     }
     else{
     url = 'https://farm'+ object.farm +'.staticflickr.com/'+ object.server +'/' + object.id + '_' + object.secret +'.jpg'
-    console.log(url)
+    console.log(url, "this is URL")
     return url
   }
   })
@@ -42,7 +41,7 @@ var getRandomWord = function(callback){
     if(err){
       console.log(err, "error")
     }
-    getPhoto(response.text)
+     return getPhoto(response.text)
   })
 }
 
