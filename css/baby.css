@@ -1,0 +1,28 @@
+#cupboard {
+  background-color: blue;
+  height: 100px;
+  width: 100px;
+}
+
+#underZip {
+  background-color: red;
+  height: 100px;
+  width: 100px;
+}
+
+#dishwasher {
+  background-color: yellow;
+  height: 100px;
+  width: 100px;
+}
+
+#cup {
+  /*background-color: green;*/
+  border-style: solid;
+  height: 50px;
+  width: 50px;
+}
+
+.cupDropped {
+  background-color:pink;
+}
