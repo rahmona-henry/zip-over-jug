@@ -1,4 +1,5 @@
- $(init)
+$(init)
+
 function init() {
 
   $('.cup').each( function () {
@@ -30,8 +31,9 @@ function pourTheZip(event, cup) {
     cup.draggable.addClass( 'fill' )
   }, 1000)
 
-  // $('#zip').removeClass('run')
-
+  setTimeout( function () {
+    $('#zip').removeClass('run')
+  }, 2000)
 }
 
 function dishwashCup(event, cup) {
