@@ -8,6 +8,6 @@ var getRandomWord= require('./flickr');
 function setBackgrounds(){
   for(var i=0; i<9; i++){
     var img=getRandomWord();
-    document.querySelectorAll("#cup"+i).
+    document.querySelectorAll("#cup"+i).style.background = "url('" + +"')"
   }
 }
