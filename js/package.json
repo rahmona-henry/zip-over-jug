@@ -1,0 +1,17 @@
+{
+  "name": "js",
+  "version": "1.0.0",
+  "description": "\"flicker picture package.json\"",
+  "main": "flickr.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^2.0.0",
+    "flickr": "^0.2.0",
+    "superagent": "^1.8.3",
+    "tape": "^4.5.1"
+  }
+}
