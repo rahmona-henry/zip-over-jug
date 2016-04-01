@@ -7,9 +7,11 @@ div {
   height: 100vh;
   background-color: white; }
   #wrapper h1 {
+    font-family: 'Chewy', cursive;
     margin: 0px;
     display: block;
-    margin-left: 40%; }
+    margin-left: 25%;
+    font-size: 3em; }
 
 #cupboard {
   z-index: 10;
@@ -75,6 +77,27 @@ div {
   bottom: 2%;
   background: url("../image/dishwasher.jpg") no-repeat center top;
   background-size: cover; }
+  #dishwasher .content {
+    display: none;
+    width: 30%;
+    height: 48%;
+    z-index: 100;
+    background: url("../image/box.jpg") no-repeat center center;
+    background-size: cover;
+    position: fixed;
+    top: 5%;
+    right: 8%; }
+  #dishwasher.open {
+    background: url("../image/opendishwasher.jpg") no-repeat center top;
+    background-size: cover; }
+    #dishwasher.open .content {
+      text-align: center;
+      display: block; }
+      #dishwasher.open .content p {
+        margin: 23px;
+        font-size: 30px; }
+      #dishwasher.open .content p:last-child {
+        margin: 0px; }
 
 #bench {
   width: 100%;
