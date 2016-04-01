@@ -1,3 +1,4 @@
+cd ..
 $(init)
 
 function init() {

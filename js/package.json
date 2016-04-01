@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "browserify": "^13.0.0",
     "dotenv": "^2.0.0",
     "flickr": "^0.2.0",
     "fs": "0.0.2",
