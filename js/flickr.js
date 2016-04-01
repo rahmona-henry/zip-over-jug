@@ -1,16 +1,11 @@
 var agent = require('superagent')
 var dotenv = require('dotenv')
 
-
 dotenv.load()
-
-
-
 
 var url
 
 var getPhoto = function(str, callback){
-console.log(str, "this is str")
 var query = [
   'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=',
   process.env.FLICKR_API_KEY,
@@ -22,14 +17,13 @@ var query = [
       return}
 
     var object = JSON.parse(response.text)
-    console.log(object)
     object = object.photos.photo[0]
 
     if(object == undefined){
       getRandomWord()
     }
     else{
-    url = 'https://farm'+ object.farm +'.staticflickr.com/'+ object.server +'/' + object.id + '_' + object.secret +'.jpg'
+    url = 'https://farm'+ object.farm +'.staticflickr.com/'+ object.server +'/' + object.id + '_' + object.secret +'_t.jpg'
     console.log(url, "this is URL")
     return url
   }

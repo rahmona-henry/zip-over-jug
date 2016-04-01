@@ -1,6 +1,6 @@
 
 
-function dragNdrop() {
+function init() {
 
   $('.cup').each( function () {
       $( this ).draggable({
