@@ -1,6 +1,7 @@
 $bench-color: #E71D36;
 $cupboard-color: #75D701;
 $dishwasher :#a3a1a1;
+$water : #cff09e;
 
 div{
 	display: block;
@@ -47,12 +48,14 @@ div{
 				position: absolute;
 				left: 0;
 				bottom: 0;
-				background-color: red;
+				background-color: $water;
 			}
 		}
 		.cup.fill{
+			opacity: 0.9;
 			.glassWater{
 				height: 80%;
+				opacity: 0.7;
 				transition: height 2s;
 			}
 		}
@@ -110,6 +113,7 @@ div{
 		.content{
 			text-align: center;
 			display: block;
+			transition: display 1s;
 			p{
 				margin: 23px;
 				font-size: 30px;
@@ -150,6 +154,6 @@ div{
 	border-radius: 50%;
 	position: absolute;
 	top: 65%;
-	left: 24%;
+	left: 29%;
 	background-color: black;
 }
